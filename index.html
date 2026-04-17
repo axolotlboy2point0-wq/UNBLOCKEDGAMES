@@ -258,8 +258,8 @@
                 "id": "fnaf-1",
                 "title": "Five Nights at Freddy's 1",
                 "category": "PORTS",
-                "thumbnail": "https://picsum.photos/seed/nightshift/800/600",
-                "url": "https://cdn.jsdelivr.net/gh/genizy/fnaf@latest/1/index.html",
+                "thumbnail": "https://m.media-amazon.com/images/I/717-hD6Mv4L.png",
+                "url": "games/fnaf1.html",
                 "description": "CRITICAL THREAT DETECTED: Monitor surveillance fragments to maintain containment. Low-power protocols active. Survive the shift."
             }
         ];
@@ -314,21 +314,21 @@
                 grid.innerHTML = filtered.map((g, i) => `
                     <div 
                         onclick="playGame('${g.id}')"
-                        class="group relative cyber-card overflow-hidden cursor-pointer ${i % 5 === 0 ? 'lg:col-span-2' : ''}"
+                        class="group relative cyber-card overflow-hidden cursor-pointer"
                     >
-                        <div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-60 transition-all duration-500 scale-105 group-hover:scale-100">
-                            <img src="${g.thumbnail}" alt="${g.title}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 z-0 bg-black">
+                            <img src="${g.thumbnail}" alt="${g.title}" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 scale-100 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 transition-opacity"></div>
                         </div>
                         <div class="relative z-10 p-6 h-full flex flex-col justify-end">
-                            <div class="mb-4">
-                                <span class="text-[9px] font-black text-black bg-yellow-400 px-3 py-1 uppercase tracking-widest">${g.category}</span>
+                            <div class="mb-2">
+                                <span class="text-[9px] font-black text-black bg-yellow-400 px-3 py-1 uppercase tracking-widest shadow-[0_0_15px_rgba(255,226,17,0.3)]">${g.category}</span>
                             </div>
-                            <h3 class="text-2xl font-black uppercase tracking-tighter group-hover:text-yellow-400 transition-colors italic leading-tight">${g.title}</h3>
-                            <p class="text-[10px] text-white/40 line-clamp-1 mt-1 font-bold mono uppercase tracking-wider mb-4 border-l-2 border-yellow-400/20 pl-2">${g.description}</p>
+                            <h3 class="text-2xl font-black uppercase tracking-tighter group-hover:text-yellow-400 transition-colors italic leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">${g.title}</h3>
+                            <p class="text-[10px] text-white/70 line-clamp-1 mt-1 font-bold mono uppercase tracking-wider mb-4 border-l-2 border-yellow-400 pl-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">${g.description}</p>
                             <div class="flex items-center gap-3">
-                                <div class="px-4 py-2 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-tighter skew-x-[-10deg] group-hover:bg-white transition-all">
-                                    Initiate_Link
+                                <div class="px-5 py-2.5 bg-yellow-400 text-black text-[11px] font-black uppercase tracking-tighter skew-x-[-10deg] group-hover:bg-white transition-all shadow-xl">
+                                    INITIATE_GAME
                                 </div>
                             </div>
                         </div>
@@ -347,7 +347,13 @@
             
             document.getElementById('modal-title').innerText = game.title;
             document.getElementById('modal-desc').innerText = game.description;
-            frame.src = game.url;
+            
+            // Clear and reload frame to ensure fresh state
+            frame.src = 'about:blank';
+            setTimeout(() => {
+                frame.src = game.url;
+            }, 50);
+            
             modal.classList.add('active');
         }
 
