@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "title": "Geometry Dash",
+    "category": "Arcade",
+    "url": "https://scratch.mit.edu/projects/105500895/embed",
+    "thumbnail": "https://picsum.photos/seed/geometry/400/250",
+    "description": "Jump and fly your way through danger in this rhythm-based action platformer!"
+  },
+  {
+    "id": "2",
+    "title": "2048",
+    "category": "Puzzle",
+    "url": "https://scratch.mit.env/projects/236087531/embed",
+    "thumbnail": "https://picsum.photos/seed/2048/400/250",
+    "description": "Join the numbers and get to the 2048 tile!"
+  },
+  {
+    "id": "3",
+    "title": "Slope",
+    "category": "Action",
+    "url": "https://kdata1.com/2020/05/slope/",
+    "thumbnail": "https://picsum.photos/seed/slope/400/250",
+    "description": "Roll down the slope as far as you can without falling off or hitting obstacles."
+  },
+  {
+    "id": "4",
+    "title": "Retro Bowl",
+    "category": "Sports",
+    "url": "https://retrobowl.games/retro-bowl.embed",
+    "thumbnail": "https://picsum.photos/seed/retrobowl/400/250",
+    "description": "The perfect game for the armchair quarterback to finally prove a point."
+  },
+  {
+    "id": "5",
+    "title": "Flappy Bird",
+    "category": "Arcade",
+    "url": "https://scratch.mit.edu/projects/117500334/embed",
+    "thumbnail": "https://picsum.photos/seed/flappy/400/250",
+    "description": "Tap to flap your wings and avoid the pipes."
+  },
+  {
+    "id": "6",
+    "title": "Snake",
+    "category": "Arcade",
+    "url": "https://scratch.mit.edu/projects/10128431/embed",
+    "thumbnail": "https://picsum.photos/seed/snake/400/250",
+    "description": "Classic snake game. Eat the apples, grow longer, don't hit the walls."
+  }
+]

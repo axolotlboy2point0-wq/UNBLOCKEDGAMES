@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --color-bento-bg: #0A0A0B;
+  --color-bento-card: #161618;
+  --color-bento-border: #27272A;
+  --color-bento-accent: #3B82F6;
+  --color-bento-text: #F9FAFB;
+  --color-bento-muted: #9CA3AF;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
