@@ -162,40 +162,6 @@
     </nav>
 
     <main class="max-w-7xl mx-auto px-6 py-10 relative">
-        <!-- Bento Header Area -->
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-10">
-            <div class="lg:col-span-3 cyber-card p-8 relative overflow-hidden flex flex-col justify-center items-center group min-h-[220px]">
-                <div class="absolute inset-0 bg-yellow-400/5 opacity-50"></div>
-                <!-- Animated Background Pattern -->
-                <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(var(--cyber-yellow) 1px, transparent 1px); background-size: 20px 20px;"></div>
-                
-                <div class="relative z-10 text-center">
-                    <span class="inline-block px-3 py-1 bg-yellow-400 text-black text-[9px] font-black uppercase tracking-[0.2em] mb-4 shadow-[5px_5px_0_rgba(255,255,255,0.1)]">Priority_Node</span>
-                    <h2 class="text-4xl font-black mb-2 tracking-tighter opacity-10 uppercase italic skew-x-[-15deg] select-none">No Active Sync</h2>
-                    <p class="text-yellow-400/40 text-[9px] font-bold uppercase tracking-[0.5em] mono animate-pulse">Scanning infrastructure for featured content...</p>
-                </div>
-            </div>
-            
-            <div class="cyber-card p-6 flex flex-col justify-between overflow-hidden">
-                <div class="absolute -right-4 -top-4 w-12 h-12 bg-yellow-400 rotate-45 opacity-20"></div>
-                <h3 class="text-[10px] font-black text-white/40 uppercase tracking-[0.3em] mb-4 text-center">Diagnostics</h3>
-                <div class="space-y-6">
-                    <div class="text-center">
-                        <span class="block text-2xl font-black text-yellow-400 tracking-tighter leading-none mono animate-pulse">24ms</span>
-                        <span class="text-[8px] font-bold text-white/50 uppercase tracking-[0.2em] mono">Ping</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="block text-2xl font-black text-yellow-400 tracking-tighter leading-none mono">99.9%</span>
-                        <span class="text-[8px] font-bold text-white/50 uppercase tracking-[0.2em] mono">Stability</span>
-                    </div>
-                    <div class="text-center group cursor-help">
-                        <span class="block text-lg font-black text-white tracking-tighter leading-none mono group-hover:text-yellow-400 transition-colors uppercase italic border-y border-white/10 py-1">Secure_TLS</span>
-                        <span class="text-[8px] font-bold text-white/50 uppercase tracking-[0.2em] mono mt-1 block">Protocols</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Categories -->
         <div id="category-bar" class="flex items-center gap-3 mb-12 overflow-x-auto pb-6 cyber-scroll">
             <!-- Rendered via JS -->
@@ -286,7 +252,18 @@
 
     <!-- Interface Logic -->
     <script>
-        let games = [];
+        // Local database to ensure zero-latency fragment loading
+        let games = [
+            {
+                "id": "fnaf-1",
+                "title": "Five Nights at Freddy's 1",
+                "category": "PORTS",
+                "thumbnail": "https://picsum.photos/seed/nightshift/800/600",
+                "url": "https://cdn.jsdelivr.net/gh/genizy/fnaf@latest/1/index.html",
+                "description": "CRITICAL THREAT DETECTED: Monitor surveillance fragments to maintain containment. Low-power protocols active. Survive the shift."
+            }
+        ];
+        
         let activeCategory = 'ALL GAMES';
         let searchQuery = '';
         const categories = ["ALL GAMES", "FAVORITES", "DOS", "EMULATOR", "FLASH", "GBA", "NG4", "NDS", "NES", "PORTS", "PSX", "TOOLS"];
@@ -298,16 +275,10 @@
         const modal = document.getElementById('game-modal');
         const frame = document.getElementById('game-frame');
 
-        async function init() {
-            try {
-                const response = await fetch('src/data/games.json');
-                games = await response.json();
-                renderCategories();
-                renderGames();
-                lucide.createIcons();
-            } catch (err) {
-                grid.innerHTML = `<div class="col-span-full py-24 text-center cyber-card"><p class="text-yellow-400 mono">[ FAIL: UPLINK_LOST ]</p></div>`;
-            }
+        function init() {
+            renderCategories();
+            renderGames();
+            lucide.createIcons();
         }
 
         function renderCategories() {
@@ -353,8 +324,13 @@
                             <div class="mb-4">
                                 <span class="text-[9px] font-black text-black bg-yellow-400 px-3 py-1 uppercase tracking-widest">${g.category}</span>
                             </div>
-                            <h3 class="text-2xl font-black uppercase tracking-tighter group-hover:text-yellow-400 transition-colors italic">${g.title}</h3>
-                            <p class="text-[11px] text-white/40 line-clamp-1 mt-1 font-bold mono uppercase tracking-wider">${g.description}</p>
+                            <h3 class="text-2xl font-black uppercase tracking-tighter group-hover:text-yellow-400 transition-colors italic leading-tight">${g.title}</h3>
+                            <p class="text-[10px] text-white/40 line-clamp-1 mt-1 font-bold mono uppercase tracking-wider mb-4 border-l-2 border-yellow-400/20 pl-2">${g.description}</p>
+                            <div class="flex items-center gap-3">
+                                <div class="px-4 py-2 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-tighter skew-x-[-10deg] group-hover:bg-white transition-all">
+                                    Initiate_Link
+                                </div>
+                            </div>
                         </div>
                         <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                             <i data-lucide="external-link" class="w-5 h-5 text-yellow-400"></i>
